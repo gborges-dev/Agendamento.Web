@@ -1,0 +1,80 @@
+{
+  "alunos": [
+    {
+      "Nome": "Gabriel Borges",
+      "DataNascimento": "2001-07-06T03:00:00.000Z",
+      "CPF": "999.999.999-99",
+      "Cidade": "Criciúma",
+      "Bairro": "Boa vista",
+      "Endereco": "Rua Barra Velhaaa",
+      "TipoPlano": {
+        "label": "Mensal",
+        "id": 1
+      },
+      "id": "1"
+    },
+    {
+      "id": "2dd1",
+      "Nome": "Teste",
+      "DataNascimento": "2025-08-20T03:00:00.000Z",
+      "CPF": "11111111111",
+      "Cidade": "Içara",
+      "Bairro": "Boa vista",
+      "Endereco": "130 Rua Barra Velha",
+      "TipoPlano": {
+        "label": "Trimestral",
+        "id": 2
+      }
+    },
+    {
+      "id": "4bf7",
+      "Nome": "Teste",
+      "DataNascimento": "2025-08-20T03:00:00.000Z",
+      "CPF": "11111111111",
+      "Cidade": "Içara",
+      "Bairro": "Boa vista",
+      "Endereco": "130 Rua Barra Velha",
+      "TipoPlano": {
+        "label": "Trimestral",
+        "id": 2
+      }
+    },
+    {
+      "id": "5bce",
+      "Nome": "Teste 2",
+      "DataNascimento": "2001-06-07T03:00:00.000Z",
+      "CPF": "11492207918",
+      "Cidade": "Criciuma",
+      "Bairro": "Boa vista",
+      "Endereco": "Barra velha",
+      "TipoPlano": {
+        "label": "Anual",
+        "id": 3
+      }
+    },
+    {
+      "Nome": "Nati",
+      "DataNascimento": "2025-08-06T03:00:00.000Z",
+      "CPF": "99999999999",
+      "Cidade": "Criciúma",
+      "Bairro": "Boa viustaaaaaaa",
+      "Endereco": "130 Rua Barra Velha",
+      "TipoPlano": {
+        "label": "Trimestral",
+        "id": 2
+      },
+      "id": "f3b9"
+    }
+  ],
+  "aulas": [
+    {
+      "Id": 1,
+      "Descricao": "Cross training",
+      "TipoAula": "Cross",
+      "DataHora": "26/08/2025 15:00",
+      "Capacidade": 10,
+      "Status": 1,
+      "PermiteAgendamentoPosInicio": false
+    }
+  ]
+}
