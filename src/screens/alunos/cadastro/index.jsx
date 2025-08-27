@@ -27,7 +27,6 @@ export const AlunoCadastro = ({ isOpen, onClose, onRefresh, aluno }) => {
         endereco: false,
         tipoPlano: false,
     });
-
     
     useEffect(() => {
         if (aluno) {

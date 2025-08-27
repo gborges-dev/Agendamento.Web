@@ -54,7 +54,7 @@ export const AlunoListagem = () => {
             </S.Container>
             <S.Container>
                 <S.GridCard>
-                    {storeAlunos.map((aluno, index) => {
+                    {storeAlunos.map((aluno) => {
                         return (
                             <Card sx={{ borderRadius: 3, boxShadow: 3, p: 1, minWidth: 250 }}>
                               <CardContent>

@@ -74,7 +74,17 @@
       "DataHora": "26/08/2025 15:00",
       "Capacidade": 10,
       "Status": 1,
-      "PermiteAgendamentoPosInicio": false
+      "PermiteAgendamentoPosInicio": false,
+      "Participantes": []
+    }, {
+      "Id": 2,
+      "Descricao": "Musculação",
+      "TipoAula": "Musculacao",
+      "DataHora": "27/08/2025 10:00",
+      "Capacidade": 2,
+      "Status": 1,
+      "PermiteAgendamentoPosInicio": false,
+      "Participantes": []
     }
   ]
 }
