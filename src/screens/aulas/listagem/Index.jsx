@@ -19,7 +19,9 @@ export const AulasListagem = () => {
     const [selectedAula, setSelectedAula] = useState(null);
 
     const fetchAulas = () => {
-        fetch('http://localhost:3003/aulas')
+      
+
+        fetch(`http://localhost:3003/aulas`)
           .then(response => {
             if (!response.ok) {
               throw new Error(`Erro na requisição: ${response.status}`);
@@ -27,7 +29,16 @@ export const AulasListagem = () => {
             return response.json();
           })
           .then(data => {
-            setStoreAulas(data);
+            const hoje = new Date();
+            const inicio = new Date(hoje.setHours(0,0,0,0));
+            const fim = new Date(hoje.setHours(23,59,59,999));
+
+            const aulasDeHoje = data.filter(aula => {
+              const d = new Date(aula.DataHora);
+              return d >= inicio && d <= fim;
+            });
+
+            setStoreAulas(aulasDeHoje);
           })
           .catch(error => {
             alert(`Erro ao buscar os dados: ${error}`);
