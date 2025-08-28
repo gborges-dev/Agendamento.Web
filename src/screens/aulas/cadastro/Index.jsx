@@ -1,53 +1,29 @@
-import { Autocomplete, FormControl, TextField } from "@mui/material";
+import { Autocomplete, Checkbox, FormControl, FormControlLabel, TextField } from "@mui/material";
 import { ModalCadastro } from "../../../components/modal/Index";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker"; // Alterado para DateTimePicker
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { ptBR } from "date-fns/locale";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
 import * as S from "./styles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
+export const AulasCadastro = ({ isOpen, onClose, onRefresh }) => {
     if (!isOpen) return <></>;
 
     const [Descricao, setDescricao] = useState('');
-    const [TipoAula, setTipoAula] = useState();
+    const [TipoAula, setTipoAula] = useState(null);
     const [DataHora, setDataHora] = useState('');
     const [Capacidade, setCapacidade] = useState('');
-    const [Status, setStatus] = useState('');
-    const [PermiteAgendamentoPosInicio, setPermiteAgendamentoPosInicio] = useState('');
-    const [Participantes, setParticipantes] = useState(null);
+    const [Status, setStatus] = useState(null);
+    const [PermiteAgendamentoPosInicio, setPermiteAgendamentoPosInicio] = useState(false);
     const [errors, setErrors] = useState({
         Descricao: false,
         TipoAula: false,
         DataHora: false,
         Capacidade: false,
         Status: false,
-        PermiteAgendamentoPosInicio: false,
-        Participantes: false,
     });
-
-    
-    useEffect(() => {
-        if (aula) {
-            setDescricao(aula.Descricao || '');
-            setTipoAula(aula.TipoAula || '');
-            setDataHora(aula.DataHora ? new Date(aula.DataHora) : null);
-            setCapacidade(aula.Capacidade || '');
-            setStatus(aula.Status || 0);
-            setPermiteAgendamentoPosInicio(aula.PermiteAgendamentoPosInicio || '');
-            setParticipantes(aula.Participantes || []);
-        } else {
-            setDescricao('');
-            setTipoAula('');
-            setDataHora(null);
-            setCapacidade('');
-            setStatus(0);
-            setPermiteAgendamentoPosInicio('');
-            setParticipantes(null);
-        }
-    }, [aula]);
 
     const handleSave = () => {
         const newErrors = {
@@ -56,8 +32,6 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
             DataHora: !DataHora,
             Capacidade: !Capacidade,
             Status: !Status,
-            PermiteAgendamentoPosInicio: !PermiteAgendamentoPosInicio,
-            Participantes: !Participantes,
         };
 
         setErrors(newErrors);
@@ -67,17 +41,14 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
         const aulaDto = {
             Descricao: Descricao,
             TipoAula: TipoAula,
-            DataHora: DataHora,
+            DataHora: DataHora ? DataHora.toISOString() : null, // Converte para string ISO
             Capacidade: Capacidade,
             Status: Status,
             PermiteAgendamentoPosInicio: PermiteAgendamentoPosInicio,
-            Participantes: Participantes,
         };
 
-        const method = aula ? 'PUT' : 'POST';
-        const url = aula
-            ? `http://localhost:3003/aulas/${aula.id}`
-            : 'http://localhost:3003/aulas'; 
+        const method = 'POST';
+        const url = 'http://localhost:3003/aulas';
 
         fetch(url, {
             method: method,
@@ -93,7 +64,7 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
             return response.json();
         })
         .then(data => {
-            console.log(aula ? 'Aula atualizada com sucesso:' : 'Aula cadastrada com sucesso:', data);
+            console.log('Aula cadastrada com sucesso:', data);
             onClose();
             onRefresh();
         })
@@ -102,15 +73,19 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
         });
     };
 
-    const options = [
+    const enumTipoAula = [
         { label: 'Cross', id: 1 },
         { label: 'Musculação', id: 2 },
         { label: 'Pilates', id: 3 },
     ];
+    const enumStatus = [
+        { label: 'Aberta', id: 1 },
+        { label: 'Concluída', id: 2 }
+    ];
 
     return (
         <ModalCadastro 
-            title={aula ? "Editar aula" : "Agendar aula"}
+            title={"Cadastrar aula"}
             isOpen={isOpen} 
             handleClose={onClose} 
             handleSave={handleSave}>
@@ -126,27 +101,9 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
                             helperText={errors.Descricao ? "Descrição é obrigatória" : ""}
                         />
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
-                            <DatePicker
-                                label="Data/hora da aula"
-                                value={DataHora}
-                                onChange={(newValue) => setDataHora(newValue)}
-                                inputFormat="dd/MM/yyyy"
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        variant="standard"
-                                        required
-                                        error={errors.DataHora}
-                                        helperText={errors.DataHora ? "Data é obrigatória" : ""}
-                                    />
-                                )}
-                            />
-                        </LocalizationProvider>
-                        
                         <Autocomplete
                             disablePortal
-                            options={options}
+                            options={enumTipoAula}
                             value={TipoAula}
                             onChange={(event, newValue) => setTipoAula(newValue ? newValue : null)}
                             renderInput={(params) => (
@@ -157,6 +114,56 @@ export const AulasCadastro = ({ isOpen, onClose, onRefresh, aula }) => {
                                     helperText={errors.TipoAula ? "Tipo de aula é obrigatório" : ""}
                                 />
                             )}
+                        />
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
+                            <DateTimePicker
+                                label="Data/hora da aula"
+                                value={DataHora}
+                                onChange={(newValue) => setDataHora(newValue)}
+                                inputFormat="dd/MM/yyyy HH:mm" // Formato de data e hora
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        variant="standard"
+                                        required
+                                        error={errors.DataHora}
+                                        helperText={errors.DataHora ? "Data/hora é obrigatória" : ""}
+                                    />
+                                )}
+                            />
+                        </LocalizationProvider>
+
+                        <TextField
+                          label="Capacidade de alunos"
+                          type="number"
+                          variant="standard"
+                          value={Capacidade}
+                          onChange={(e) => setCapacidade(e.target.value)}
+                          error={errors.Capacidade}
+                          helperText={errors.Capacidade ? "Capacidade é obrigatória" : ""}
+                        />
+
+                        <Autocomplete
+                            disablePortal
+                            options={enumStatus}
+                            value={Status}
+                            onChange={(event, newValue) => setStatus(newValue ? newValue : null)}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Status"
+                                    error={errors.Status}
+                                    helperText={errors.Status ? "Status é obrigatório" : ""}
+                                />
+                            )}
+                        />
+                        <FormControlLabel
+                          control={
+                            <Checkbox value={PermiteAgendamentoPosInicio} 
+                                onChange={(event, newValue) => setPermiteAgendamentoPosInicio(newValue ? newValue : null)}
+                            />}
+                          label="Permite agendamento pós início"
                         />
                     </S.Form>
                 </FormControl>

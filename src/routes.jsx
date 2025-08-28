@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AlunoCadastro } from './screens/alunos/cadastro';
 import { AlunoListagem } from './screens/alunos/listagem/Index';
 import { AulasListagem } from './screens/aulas/listagem/Index';
-import { AulasCadastro } from './screens/aulas/cadastro/Index';
-
 export const AppRoutes = () => {
     return (
         <BrowserRouter>

@@ -1,5 +1,16 @@
 import styled, { css } from 'styled-components';
 
+export const ContainerPai = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x  : auto;
+`;
+
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
@@ -26,7 +37,7 @@ export const ContainerButtonEditar = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 320px;
+  width: 100%;
   border-radius: 16px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
   padding: 16px;
@@ -38,8 +49,10 @@ export const Card = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Label = styled.span`

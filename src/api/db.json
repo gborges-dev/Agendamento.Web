@@ -28,7 +28,7 @@
     },
     {
       "id": "4bf7",
-      "Nome": "Teste",
+      "Nome": "Gabriel",
       "DataNascimento": "2025-08-20T03:00:00.000Z",
       "CPF": "11111111111",
       "Cidade": "Içara",
@@ -68,23 +68,187 @@
   ],
   "aulas": [
     {
-      "Id": 1,
-      "Descricao": "Cross training",
-      "TipoAula": "Cross",
-      "DataHora": "26/08/2025 15:00",
+      "Descricao": "Aula de pilates",
+      "TipoAula": {
+        "label": "Pilates",
+        "id": 3
+      },
+      "DataHora": "2025-08-27T05:00:00.000Z",
+      "Capacidade": 5,
+      "Status": {
+        "label": "Concluída",
+        "id": 2
+      },
+      "PermiteAgendamentoPosInicio": true,
+      "Participantes": [
+        {
+          "Nome": "Nati",
+          "DataNascimento": "2025-08-06T03:00:00.000Z",
+          "CPF": "99999999999",
+          "Cidade": "Criciúma",
+          "Bairro": "Boa viustaaaaaaa",
+          "Endereco": "130 Rua Barra Velha",
+          "TipoPlano": {
+            "label": "Trimestral",
+            "id": 2
+          },
+          "id": "f3b9"
+        },
+        {
+          "Nome": "Gabriel Borges",
+          "DataNascimento": "2001-07-06T03:00:00.000Z",
+          "CPF": "999.999.999-99",
+          "Cidade": "Criciúma",
+          "Bairro": "Boa vista",
+          "Endereco": "Rua Barra Velhaaa",
+          "TipoPlano": {
+            "label": "Mensal",
+            "id": 1
+          },
+          "id": "1"
+        },
+        {
+          "id": "2dd1",
+          "Nome": "Teste",
+          "DataNascimento": "2025-08-20T03:00:00.000Z",
+          "CPF": "11111111111",
+          "Cidade": "Içara",
+          "Bairro": "Boa vista",
+          "Endereco": "130 Rua Barra Velha",
+          "TipoPlano": {
+            "label": "Trimestral",
+            "id": 2
+          }
+        },
+        {
+          "id": "5bce",
+          "Nome": "Teste 2",
+          "DataNascimento": "2001-06-07T03:00:00.000Z",
+          "CPF": "11492207918",
+          "Cidade": "Criciuma",
+          "Bairro": "Boa vista",
+          "Endereco": "Barra velha",
+          "TipoPlano": {
+            "label": "Anual",
+            "id": 3
+          }
+        },
+        {
+          "id": "4bf7",
+          "Nome": "Gabriel",
+          "DataNascimento": "2025-08-20T03:00:00.000Z",
+          "CPF": "11111111111",
+          "Cidade": "Içara",
+          "Bairro": "Boa vista",
+          "Endereco": "130 Rua Barra Velha",
+          "TipoPlano": {
+            "label": "Trimestral",
+            "id": 2
+          }
+        }
+      ],
+      "id": "7f08"
+    },
+    {
+      "Descricao": "Teste",
+      "TipoAula": {
+        "label": "Cross",
+        "id": 1
+      },
+      "DataHora": "2025-08-20T03:00:00.000Z",
       "Capacidade": 10,
-      "Status": 1,
-      "PermiteAgendamentoPosInicio": false,
-      "Participantes": []
-    }, {
-      "Id": 2,
-      "Descricao": "Musculação",
-      "TipoAula": "Musculacao",
-      "DataHora": "27/08/2025 10:00",
-      "Capacidade": 2,
-      "Status": 1,
-      "PermiteAgendamentoPosInicio": false,
-      "Participantes": []
+      "Status": {
+        "label": "Concluída",
+        "id": 2
+      },
+      "PermiteAgendamentoPosInicio": true,
+      "Participantes": [
+        {
+          "Nome": "Gabriel Borges",
+          "DataNascimento": "2001-07-06T03:00:00.000Z",
+          "CPF": "999.999.999-99",
+          "Cidade": "Criciúma",
+          "Bairro": "Boa vista",
+          "Endereco": "Rua Barra Velhaaa",
+          "TipoPlano": {
+            "label": "Mensal",
+            "id": 1
+          },
+          "id": "1"
+        },
+        {
+          "id": "2dd1",
+          "Nome": "Teste",
+          "DataNascimento": "2025-08-20T03:00:00.000Z",
+          "CPF": "11111111111",
+          "Cidade": "Içara",
+          "Bairro": "Boa vista",
+          "Endereco": "130 Rua Barra Velha",
+          "TipoPlano": {
+            "label": "Trimestral",
+            "id": 2
+          }
+        },
+        {
+          "id": "5bce",
+          "Nome": "Teste 2",
+          "DataNascimento": "2001-06-07T03:00:00.000Z",
+          "CPF": "11492207918",
+          "Cidade": "Criciuma",
+          "Bairro": "Boa vista",
+          "Endereco": "Barra velha",
+          "TipoPlano": {
+            "label": "Anual",
+            "id": 3
+          }
+        }
+      ],
+      "id": "9723"
+    },
+    {
+      "id": "c140",
+      "Descricao": "Teste 2",
+      "TipoAula": {
+        "label": "Cross",
+        "id": 1
+      },
+      "DataHora": "2025-08-14T03:00:00.000Z",
+      "Capacidade": 12,
+      "Status": {
+        "label": "Concluída",
+        "id": 2
+      },
+      "PermiteAgendamentoPosInicio": true
+    },
+    {
+      "id": "dad3",
+      "Descricao": "Teste 3",
+      "TipoAula": {
+        "label": "Pilates",
+        "id": 3
+      },
+      "DataHora": "2025-08-21T03:00:00.000Z",
+      "Capacidade": 3,
+      "Status": {
+        "label": "Aberta",
+        "id": 1
+      },
+      "PermiteAgendamentoPosInicio": true
+    },
+    {
+      "Descricao": "Teste 4",
+      "TipoAula": {
+        "label": "Cross",
+        "id": 1
+      },
+      "DataHora": "2025-08-28T17:00:00.000Z",
+      "Capacidade": 1,
+      "Status": {
+        "label": "Aberta",
+        "id": 1
+      },
+      "PermiteAgendamentoPosInicio": true,
+      "id": "305e"
     }
   ]
 }

@@ -37,6 +37,11 @@ export const AlunoListagem = () => {
         setOpenModal(true);
     };
     
+    const handleNovo = () => {
+        setSelectedAluno(null);
+        setOpenModal(true);
+    };
+    
     useEffect(() => {
         fetchAlunos();
     }, []);
@@ -47,7 +52,7 @@ export const AlunoListagem = () => {
             <S.Container>
                 <h1>Listagem de alunos</h1>
                 <S.ContainerButton>
-                    <Button variant="contained" size="medium" startIcon={<AddIcon />} onClick={() => setOpenModal(true)}>
+                    <Button variant="contained" size="medium" startIcon={<AddIcon />} onClick={() => handleNovo()}>
                         Novo
                     </Button>
                 </S.ContainerButton>
