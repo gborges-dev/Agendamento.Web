@@ -17,23 +17,11 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const ContainerButton = styled.div`
-    height: 35px;
-    margin-left: 30px;
-`;
-
 export const GridCard = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-`;
-
-export const ContainerButtonEditar = styled.div`
-    display: flex;
-    justify-content: end;
-    height: 35px;
-    margin-top: 10px;
 `;
 
 export const Card = styled.div`
@@ -55,54 +43,8 @@ export const Row = styled.div`
   justify-content: space-between;
 `;
 
-export const Label = styled.span`
-  font-size: 14px;
-  color: #6b7280;
-`;
-
-export const Horario = styled.span`
-  font-size: 15px;
-  font-weight: 600;
-  color: #111827;
-`;
-
-export const Descricao = styled.h2`
-  font-size: 18px;
-  font-weight: 700;
-  color: #1f2937;
-`;
 
 export const Text = styled.span`
   font-size: 15px;
   color: #374151;
-`;
-
-export const Status = styled.span`
-  display: inline-block;
-  margin-top: 4px;
-  padding: 4px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-
-  ${({ status }) =>
-    status === "Aberta" &&
-    css`
-      background-color: #d1fae5;
-      color: #065f46;
-    `}
-
-  ${({ status }) =>
-    status === "Concluída" &&
-    css`
-      background-color: #dbeafe;
-      color: #1e40af;
-    `}
-
-  ${({ status }) =>
-    status === "Cancelada" &&
-    css`
-      background-color: #fee2e2;
-      color: #991b1b;
-    `}
 `;

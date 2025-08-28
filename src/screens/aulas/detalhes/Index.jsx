@@ -140,7 +140,6 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
                                 options={enumTipoAula}
                                 value={TipoAula}
                                 onChange={(event, newValue) => {
-                                    debugger
                                     setTipoAula(newValue ? newValue : null)
                                 }}
                                 disabled={Status && Status.label === "Concluída"}
