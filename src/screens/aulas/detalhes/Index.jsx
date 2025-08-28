@@ -40,8 +40,8 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
         }
     }, [aula]);
 
-    const handleSave = (updatedAula) => {
-        const aulaDto = updatedAula || {
+    const handleSave = (finalizar = false, updatedAula) => {
+        const aulaDto = finalizar ? updatedAula : {
             Descricao: Descricao,
             TipoAula: TipoAula,
             DataHora: DataHora ? DataHora.toISOString() : null,
@@ -79,13 +79,6 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
 
     const handleAdicionarParticipante = (participante) => {
         if (!participante) return;
-
-        if (Participantes.some((p) => p.id === participante.id)) {
-            alert("Participante já adicionado.");
-            return;
-        };
-        
-        setParticipantes([...Participantes, participante]);
     };
 
     const handleRemoverParticipante = (participanteId) => {
@@ -97,7 +90,7 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
         setStatus((prevStatus) => {
             const statusConcluida = enumStatus.find((status) => status.label === "Concluída");
 
-            handleSave({
+            handleSave(true, {
                 ...aula,
                 Status: statusConcluida,
             });
@@ -120,7 +113,7 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
             title={"Editar aula"}
             isOpen={isOpen} 
             handleClose={onClose} 
-            handleSave={handleSave}>
+            handleSave={() => handleSave(false, aula)}>
                 <S.Row>
                     <FormControl fullWidth sx={{ m: 1 }}>
                         <S.Form>
@@ -200,7 +193,7 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
                             />
                             <FormControlLabel
                             control={
-                                <Checkbox value={PermiteAgendamentoPosInicio} 
+                                <Checkbox checked={PermiteAgendamentoPosInicio} 
                                     disabled={Status && Status.label === "Concluída"}
                                     onChange={(event, newValue) => setPermiteAgendamentoPosInicio(newValue ? newValue : null)}
                                 />}
@@ -217,7 +210,7 @@ export const AgendarAula = ({ isOpen, onClose, onRefresh, aula }) => {
                             </Button>
                         </S.Form>
                     </FormControl>
-                    <ParticipantesDaAula onDisabled={Status && Status.label === "Concluída"} participantes={Participantes} onAdicionar={handleAdicionarParticipante} onRemover={handleRemoverParticipante} Capacidade={Capacidade}/>
+                    <ParticipantesDaAula aula={aula} onDisabled={Status && Status.label === "Concluída"} participantes={Participantes} onAdicionar={handleAdicionarParticipante} onRemover={handleRemoverParticipante} Capacidade={Capacidade}/>
                 </S.Row>
         </ModalCadastro>
     )

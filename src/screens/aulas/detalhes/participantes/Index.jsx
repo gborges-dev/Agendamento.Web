@@ -3,8 +3,10 @@ import * as S from "./styles";
 import { Alert, Autocomplete, Button, TextField } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
-export const ParticipantesDaAula = ({ participantes, onAdicionar, onRemover, Capacidade, onDisabled }) => {
+export const ParticipantesDaAula = ({ participantes, onAdicionar, onRemover, Capacidade, onDisabled, aula }) => {
     const [novoParticipante, setNovoParticipante] = useState(null);
     const [alunosCadastrados, setAlunosCadastrados] = useState(null);
     const [participantesState, setParticipantesState] = useState([]);
@@ -51,6 +53,13 @@ export const ParticipantesDaAula = ({ participantes, onAdicionar, onRemover, Cap
             alert("Participante já adicionado.");
             return;
         }
+        const dataHoraAulaFormatada = format(aula.DataHora, "dd/MM/yyyy HH:mm", { locale: ptBR });
+        const dataAtualFormatada = format(new Date(), "dd/MM/yyyy HH:mm", { locale: ptBR });
+    
+        if (dataHoraAulaFormatada < dataAtualFormatada && !aula.PermiteAgendamentoPosInicio) {
+            alert("Não é possível adicionar participantes após o início da aula.");
+            return;
+        };
 
         const updatedParticipantes = [...participantesState, participante];
         setParticipantesState(updatedParticipantes);
