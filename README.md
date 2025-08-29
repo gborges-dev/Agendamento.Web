@@ -87,7 +87,7 @@ _______________________________________________________________________
 
 Tecnologias utilizadas
 * Frontend: React, Vite, Material-UI
-* Backend: Node.js, Express
+* Backend: JsonServer
 * Outras bibliotecas: Styled-components, React-hook-form, etc.
 _______________________________________________________________________
 Funcionalidades
